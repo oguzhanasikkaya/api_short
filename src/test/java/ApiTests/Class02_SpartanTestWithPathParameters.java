@@ -5,11 +5,10 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import static org.testng.Assert.*;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class SpartanTestWithPathParameters {
+public class Class02_SpartanTestWithPathParameters {
 
     @BeforeClass
     public void setUpClass(){
@@ -39,7 +38,6 @@ public class SpartanTestWithPathParameters {
         response.body().prettyPrint();
 
     }
-
 
 
     /*

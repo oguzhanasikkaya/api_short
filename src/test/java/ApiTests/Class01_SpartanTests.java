@@ -6,7 +6,7 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SpartanTests {
+public class Class01_SpartanTests {
 
     String spartanBaseUrl = "http://54.196.128.118:8000";
 

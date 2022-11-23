@@ -12,9 +12,7 @@ import org.testng.annotations.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static io.restassured.RestAssured.*;
-
-public class class09_SpartanPOSTRequest {
+public class Class09_SpartanPOSTRequest {
 
     @BeforeClass
     public void setUpClass(){
@@ -82,6 +80,37 @@ public class class09_SpartanPOSTRequest {
 
 
 
+
+    }
+
+    @Test
+    public void POSTWithPojo(){
+        //create spartan object and used as a body for post request
+        Spartan spartan = new Spartan();
+        spartan.setName("CemalPojo");
+        spartan.setGender("Male");
+        spartan.setPhone(5536667745L);
+
+        Response response = given().accept(ContentType.JSON)
+                                    .and().contentType(ContentType.JSON)
+                                    .and().body(spartan)
+                            .when().post("/api/spartans/");
+
+        assertEquals(response.statusCode(),201);
+        assertEquals(response.contentType(),"application/json");
+
+        response.prettyPrint();
+
+        //=============================get request==========================
+
+        Response response2 = given().accept(ContentType.JSON)
+                .pathParam("id", 110)
+                .and().
+                when().get("/api/spartans/{id}");
+
+        Spartan spartanResponse = response2.body().as(Spartan.class);
+
+        System.out.println(spartanResponse.toString());
 
     }
 

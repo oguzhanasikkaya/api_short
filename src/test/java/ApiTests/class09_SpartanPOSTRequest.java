@@ -9,6 +9,9 @@ import static org.testng.Assert.*;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static io.restassured.RestAssured.*;
 
 public class class09_SpartanPOSTRequest {
@@ -50,6 +53,33 @@ public class class09_SpartanPOSTRequest {
         assertEquals(json.getString("data.name"),"Cemal");
         assertEquals(json.getString("data.gender"),"Male");
         assertEquals(json.getLong("data.phone"),5536667745L);
+
+
+
+    }
+
+    @Test
+    public void PostWithMap(){
+
+        //create a map to ve used a body for post request
+
+        Map<String,Object> requestMap   = new HashMap<>();
+
+        requestMap.put("name","CemalMap");
+        requestMap.put("gender","Male");
+        requestMap.put("phone",5536667745L);
+
+        //create a request
+        Response post = given().accept(ContentType.JSON)
+                .and().contentType(ContentType.JSON)
+                .body(requestMap)
+
+                .when().post("/api/spartans/");
+
+        assertEquals(post.statusCode(),201);
+
+        post.prettyPrint();
+
 
 
 

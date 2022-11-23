@@ -7,10 +7,6 @@ public class ApiUtils {
 
     public static void assertStatusCode(){
 
-
-
-
-
     }
 
 }
